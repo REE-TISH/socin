@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -31,14 +31,15 @@ const ProfilePage = () => {
     username:'',
     bio:'',
   })
+  const fileInputRef = useRef(null);
+  const [image,setImage] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [currentPass,setCurrentPass] = useState('')
-  const [newPass,setNewPass] = useState('')
+  const [currentPass,setCurrentPass] = useState('');
+  const [newPass,setNewPass] = useState('');
 
-
+  // Get all the data for the User Profile Page when page loaded Once
   useEffect(()=>{
     axiosInstance.get('/user/user-profile/')
     .then((response)=>{
@@ -52,23 +53,7 @@ const ProfilePage = () => {
     })
   },[])
 
-  // Settings states
-  const [notifications, setNotifications] = useState({
-    emailNotifications: true,
-    pushNotifications: true,
-    newChapters: true,
-    comments: false,
-    marketing: false
-  });
-
-  const [privacy, setPrivacy] = useState({
-    profileVisibility: 'public',
-    showReadingHistory: true,
-    showFavorites: true
-  });
-  
-  
-  
+  // Handle the input change for different fields
   const handleInputChange = (field, value) => {
 
     const passwordFields = ['currentPassword', 'confirmPassword', 'newPassword'];
@@ -93,9 +78,12 @@ const ProfilePage = () => {
 
   };
 
+  const handleCameraButtonClick = ()=>{
+    fileInputRef.current.click();
+  }
 
   const handleSaveProfile = () => {
-    // Here you would typically make an API call to save the profile
+
     const {username,bio} = formData
     const data = {
         username:username,
@@ -134,9 +122,26 @@ const ProfilePage = () => {
    
   };
 
-  const handleAvatarChange = () => {
-    // Here you would typically open a file picker or avatar selection modal
-    alert('Avatar change functionality would be implemented here');
+  const handleAvatarChange = async(e) => {
+    const file = e.target.files[0]
+    const CloudformData = new FormData();
+
+    if (file){
+      CloudformData.append("file", file);
+      CloudformData.append("upload_preset", "Socin_images");
+
+             // Upload the image to Cloud
+      const cloudinaryResponse = await axios.post("https://api.cloudinary.com/v1_1/novelsocinbackend/image/upload",CloudformData);
+
+
+      axiosInstance.put('/user/edit-avatar/',{avatar:cloudinaryResponse.data.secure_url})
+      .then((response)=>{
+        ToastSuccessMessage("avatar change success")
+      })
+      .catch((err)=>{
+        ToastErrorMessage("Error")
+      })
+    }
   };
 
   const handleDeleteAccount = () => {
@@ -201,9 +206,15 @@ const ProfilePage = () => {
                     className="w-24 h-24 rounded-full object-cover border-4 border-slate-500/30"
                   />
                   <button
-                    onClick={handleAvatarChange}
+                    onClick={handleCameraButtonClick}
                     className="absolute bottom-0 right-0 bg-slate-500 hover:bg-slate-600 text-white p-2 rounded-full transition-colors shadow-lg"
                   >
+                    <input 
+                      ref={fileInputRef}
+                      type="file" 
+                      onChange={(e)=>{handleAvatarChange(e)}}
+                      className='hidden'  
+                      accept="image/*" />
                     <Camera className="w-4 h-4" />
                   </button>
                 </div>
