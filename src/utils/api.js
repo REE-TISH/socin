@@ -20,7 +20,7 @@ const isTokenExpired = (token) => {
 
 // Create Axios instance
 const axiosInstance = axios.create({
-  baseURL: LOCAL_URL,
+  baseURL: PROD_URL,
 });
 
 // Request interceptor: attach token
