@@ -10,52 +10,6 @@ import { Crown } from 'lucide-react';
 
 function UserProfile() {
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
-  // const [novels, setNovels] = useState([
-  //   {
-  //     id: 1,
-  //     title: "The Shadow's End",
-  //     description: "A dark fantasy tale of redemption and revenge in a world where shadows hold ancient powers.",
-  //     coverImage: "https://images.pexels.com/photos/1509582/pexels-photo-1509582.jpeg?auto=compress&cs=tinysrgb&w=400",
-  //     isPublic: true,
-  //     chapters: 24,
-  //     views: 15420,
-  //     likes: 892,
-  //     createdAt: "2024-01-15"
-  //   },
-  //   {
-  //     id: 2,
-  //     title: "Echoes of Tomorrow",
-  //     description: "A sci-fi thriller exploring the consequences of time travel and the choices that define humanity.",
-  //     coverImage: "https://images.pexels.com/photos/2098428/pexels-photo-2098428.jpeg?auto=compress&cs=tinysrgb&w=400",
-  //     isPublic: true,
-  //     chapters: 18,
-  //     views: 8934,
-  //     likes: 567,
-  //     createdAt: "2024-02-20"
-  //   },
-  //   {
-  //     id: 3,
-  //     title: "Whispers in the Dark",
-  //     description: "A horror mystery that delves into the supernatural secrets of an abandoned mansion.",
-  //     coverImage: "https://images.pexels.com/photos/1936936/pexels-photo-1936936.jpeg?auto=compress&cs=tinysrgb&w=400",
-  //     isPublic: false,
-  //     chapters: 8,
-  //     views: 0,
-  //     likes: 0,
-  //     createdAt: "2024-03-10"
-  //   },
-  //   {
-  //     id: 4,
-  //     title: "Starlight Symphony",
-  //     description: "A romantic fantasy set among the stars, where music holds the key to saving the universe.",
-  //     coverImage: "https://images.pexels.com/photos/1567069/pexels-photo-1567069.jpeg?auto=compress&cs=tinysrgb&w=400",
-  //     isPublic: false,
-  //     chapters: 5,
-  //     views: 0,
-  //     likes: 0,
-  //     createdAt: "2024-03-25"
-  //   }
-  // ]);
 
   const [novels,setNovels] = useState([])
   const [user,setUser] = useState(null);
@@ -104,7 +58,7 @@ function UserProfile() {
           <div className="h-48  flex p-1"><Link to={'/'}><ArrowLeft/></Link></div>
            
         {/* User Profile Info */}
-          <div className="px-8 pb-8">
+          <div className="px-8 pb-2">
             <div className="flex flex-col sm:flex-row items-start sm:items-end -mt-20 mb-6">
               
              <div className='flex flex-col items-center'>
