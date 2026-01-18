@@ -66,12 +66,6 @@ const ProfilePage = () => {
     showReadingHistory: true,
     showFavorites: true
   });
-
-  const 
-  
-  
-  
-  
   
   
   
