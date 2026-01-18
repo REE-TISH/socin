@@ -124,8 +124,8 @@ function CreateChapter2() {
                     <Book className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                    <h1 className="text-xl font-bold text-white">{novelData.novel}</h1>
-                    <p className="text-sm text-slate-400">Chapter {novelData.working_chapter } in progress</p>
+                    <h1 className="lg:text-xl lg:font-bold text-xs font-thin text-white">{novelData.novel}</h1>
+                    <p className="text-[10px] lg:text-sm text-slate-400">Chapter {novelData.working_chapter } in progress</p>
                     </div>
                 </div>
 
@@ -248,7 +248,7 @@ function CreateChapter2() {
                             setInput('')
                         }
                         }}
-                        placeholder="Continue your story... (Press Enter to send, Shift+Enter for new line)"
+                        placeholder="Continue your story..."
                         className="w-full bg-transparent px-5 py-3 text-slate-100 placeholder-slate-400 resize-none focus:outline-none text-sm md:text-base max-h-32 min-h-[3rem]"
                         rows={1}
                     />
