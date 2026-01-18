@@ -28,7 +28,7 @@ const ProfilePage = () => {
   const [userProfile,setUserProfile] = useState(null)  
   // Form states
   const [formData,setFormData] = useState({
-    name:'',
+    username:'',
     bio:'',
   })
   const [isEditing, setIsEditing] = useState(false);
@@ -103,9 +103,9 @@ const ProfilePage = () => {
 
   const handleSaveProfile = () => {
     // Here you would typically make an API call to save the profile
-    const {name,bio} = formData
+    const {username,bio} = formData
     const data = {
-        name:name,
+        username:username,
         bio:bio,
     }
     axiosInstance.put('/user/edit-profile/',data)
