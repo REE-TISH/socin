@@ -55,7 +55,7 @@ function UserProfile() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className=" rounded-lg shadow-2xl shadow-black overflow-hidden mb-8 border border-slate-900 ">
          
-          <div className="h-48  flex p-1"><Link to={'/'}><ArrowLeft/></Link></div>
+          <div className="h-12  flex p-1"><Link to={'/'}><ArrowLeft/></Link></div>
            
         {/* User Profile Info */}
           <div className="px-8 pb-2">
