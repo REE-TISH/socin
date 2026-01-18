@@ -69,7 +69,7 @@ const ProfilePage = () => {
   
   
   
-  handleInputChange = (field, value) => {
+  const handleInputChange = (field, value) => {
 
     const passwordFields = ['currentPassword', 'confirmPassword', 'newPassword'];
 
