@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { ToastErrorMessage , ToastSuccessMessage} from '../../utils/toastMessages';
 import { LOCAL_URL } from '../../utils/api';
+import Loader from '../Loader';
 
 const mockData = {
   novelTitle: "The Last Guardian",
@@ -105,12 +106,7 @@ function CreateChapter2() {
     }
 
     if (!novelData) {
-        return (
-          <div className="flex items-center justify-center h-screen bg-gradient-to-br text-white from-gray-900 to-black">
-            
-            Loading...
-          </div>
-        );
+        return <Loader/>
       }
     
     return (
