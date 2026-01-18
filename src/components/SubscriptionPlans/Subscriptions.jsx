@@ -50,23 +50,23 @@ function Subscriptions() {
 
     return (
         <div className="min-h-screen bg-gradient-to-br flex flex-col items-center from-gray-900 to-black">
-            <Link to={'/'} className='text-white w-full p-4 cursor-pointer'><ArrowLeft/></Link>
+            <Link to={'/'} className='text-white w-full p-4  cursor-pointer'><ArrowLeft/></Link>
             <div className="container mx-auto px-4 py-4">
                 <div className="text-center mb-4">
-                <h1 className="text-5xl  text-slate-400 mb-4">
+                <h1 className="text-xl lg:text-3xl  text-slate-400 mb-4">
                     Choose Your Plan
                 </h1>
                 
                 </div>
 
-                <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="flex flex-wrap justify-center items-center gap-8 w-full mx-auto">
                     {/* Free Plan */}
-                <div className="bg-slate-500 rounded-2xl shadow-lg p-3 md:p-8 border-2 border-slate-200 hover:border-slate-300 transition-all duration-300 hover:shadow-xl">
+                <div className="bg-slate-500 rounded-2xl  shadow-lg p-3 md:p-8 border-2 border-slate-200 hover:border-slate-300 transition-all duration-300 hover:shadow-xl">
                     <div className="text-center mb-8">
                     <h2 className="text-xl md:text-3xl font-bold text-slate-900 mb-2">Free Plan</h2>
                     <div className="mb-4">
-                        <span className="text-3xl md:text-5xl font-bold text-slate-900">₹0</span>
-                        <span className="text-slate-600 md:text-lg">/month</span>
+                        <span className="text-2xl md:text-5xl font-bold text-slate-900">₹0</span>
+                        <span className="text-slate-600 text-[10px] md:text-lg">/month</span>
                     </div>
             
                     </div>
@@ -79,7 +79,7 @@ function Subscriptions() {
                         ) : (
                             <X className="w-5 h-5 text-slate-300 mr-3 flex-shrink-0" />
                         )}
-                        <span className={feature.free ? 'text-slate-700' : 'text-slate-400'}>
+                        <span className={` text-sm ${feature.free ? 'text-slate-700' : 'text-slate-400'}`}>
                             {feature.name}
                         </span>
                         </li>
@@ -100,8 +100,8 @@ function Subscriptions() {
                     <div className="text-center ">
                     <h2 className="text-xl md:text-3xl font-bold text-white ">Premium Plan</h2>
                     <div className="mb-4">
-                        <span className="text-3xl md:text-5xl font-bold text-white">₹199</span>
-                        <span className="text-blue-100 md:text-lg">/month</span>
+                        <span className="text-xl md:text-5xl font-bold text-white">₹199</span>
+                        <span className="text-blue-100 text-[10px] md:text-lg">/month</span>
                     </div>
                 
                     </div>
@@ -114,7 +114,7 @@ function Subscriptions() {
                         ) : (
                             <X className="w-5 h-5 text-blue-300 mr-3 flex-shrink-0" />
                         )}
-                        <span className={feature.premium ? 'text-white font-medium' : 'text-blue-200'}>
+                        <span className={` text-sm ${feature.premium ? 'text-white font-medium' : 'text-blue-200'}`}>
                             {feature.name}
                         </span>
                         </li>
@@ -127,9 +127,9 @@ function Subscriptions() {
                 </div>
                 </div>
 
-                <div className="text-center mt-12">
-                <p className="text-slate-600">
-                    All plans include a 14-day money-back guarantee
+                <div className="text-center mt-6">
+                <p className="text-slate-600 text-[10px] ">
+                    Some garantee
                 </p>
                 </div>
             </div>
