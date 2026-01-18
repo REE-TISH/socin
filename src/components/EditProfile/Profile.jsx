@@ -81,7 +81,6 @@ const ProfilePage = () => {
 
         ToastErrorMessage("No spaces in Pass");
     }
-
     value = sanitizedValue;
   }
 
