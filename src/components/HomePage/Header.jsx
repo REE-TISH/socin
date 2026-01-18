@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {Gem , LogOut , BookOpen} from 'lucide-react'
+import {Gem , LogOut , BookOpen , Home, HomeIcon} from 'lucide-react'
 
 function Header({meta_data}) {
-  const [activeTab, setActiveTab] = useState('home');
-  
 
   const LogoutUser = ()=>{
     localStorage.removeItem('accessToken')
@@ -28,40 +26,28 @@ function Header({meta_data}) {
            
             <nav className=" flex items-center ">
               <button
-                onClick={() => setActiveTab('home')}
-                className={`px-2 py-1 rounded-full font-semibold transition-all ${
-                  activeTab === 'home'
-                    ? 'bg-white text-black'
-                    : 'text-white hover:bg-gray-900'
-                }`}
+                className={`px-2 py-1 rounded-full font-semibold transition-all text-white `}
               >
-                Home
+                <HomeIcon className='cursor-pointer'/>
               </button>
               <Link
               to={'/profile/'}
-                onClick={() => setActiveTab('explore')}
-                className={`px-4 py-2 rounded-full font-semibold transition-all ${
-                  activeTab === 'explore'
-                    ? 'bg-white text-black'
-                    : 'text-white hover:bg-gray-900'
-                }`}
+                className={`px-4 py-2 rounded-full font-semibold transition-all `}
               >
-                <div className='flex gap-1 justify-center items-center'>
-                Create <BookOpen/>  
+                <div className='flex gap-1 justify-center items-center font-thin text-slate-300'>
+                <BookOpen/>  
                 </div> 
 
               </Link>
               {!meta_data.is_premium && <Link
                 to={'/subscriptions/'}
-                onClick={() => setActiveTab('create')}
                 className={`px-2 py-1 cursor-pointer rounded-full font-semibold transition-all text-white gap-1 flex`}
               >
-               <Gem/> Get Premium
+               <Gem/> <p className=''>Get Premium</p>
               </Link>}
               
               <Link
                 to={'/edit-profile/'}
-                onClick={() => setActiveTab('create')}
                 className={`px-2 py-1 cursor-pointer rounded-full font-semibold transition-all text-white gap-1 flex`}
               >
                <img src={meta_data.avatar || null} className='h-8 w-8 rounded-2xl object-cover' />
