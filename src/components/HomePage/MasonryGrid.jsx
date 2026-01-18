@@ -208,7 +208,7 @@ function MasonryGrid() {
     <Header meta_data={metaData}/>
     <div className="  max-w-7xl mx-auto px-4 py-6">
       {filteredPins.length > 0 ? (
-        <div className=" grid grid-cols-3 md:flex lg:pl-12 md:flex-wrap  gap-4">
+        <div className=" grid grid-cols-2 sm:grid-cols-3 md:flex lg:pl-12 md:flex-wrap  gap-4">
           {novels.map(novel => (
             <PinCard key={novel.id} novel={novel} />
           ))}
