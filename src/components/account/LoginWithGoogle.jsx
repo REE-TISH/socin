@@ -1,8 +1,8 @@
 import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { ToastSuccessMessage } from '../utils/toastMessages';
-import { PROD_URL } from '../utils/api';
+import { ToastSuccessMessage } from '../../utils/toastMessages';
+import { LOCAL_URL, PROD_URL } from '../../utils/api';
 
 function GoogleLoginButton() {
 

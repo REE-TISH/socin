@@ -9,8 +9,8 @@ import { Toaster } from 'react-hot-toast';
 import "react-toastify/dist/ReactToastify.css";
 import Error404 from './components/Error404.jsx';
 import CreateChapter from './components/ChapterCreation/CreateChapter.jsx'
-import LoginPage from './account/LoginPage.jsx';
-import RegisterPage from './account/RegisterPage.jsx';
+import LoginPage from './components/account/LoginPage.jsx';
+import RegisterPage from './components/account/RegisterPage.jsx';
 import NovelDetail from './components/Novel/NovelDetailPage.jsx';
 import NovelReader from './components/Novel/NovelReaderPage.jsx';
 import Subscriptions from './components/SubscriptionPlans/Subscriptions.jsx';

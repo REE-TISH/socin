@@ -32,7 +32,6 @@ const ProfilePage = () => {
     bio:'',
   })
   const fileInputRef = useRef(null);
-  const [image,setImage] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -132,8 +131,7 @@ const ProfilePage = () => {
 
              // Upload the image to Cloud
       const cloudinaryResponse = await axios.post("https://api.cloudinary.com/v1_1/novelsocinbackend/image/upload",CloudformData);
-
-
+      
       axiosInstance.put('/user/edit-avatar/',{avatar:cloudinaryResponse.data.secure_url})
       .then((response)=>{
         ToastSuccessMessage("avatar change success")
@@ -397,7 +395,7 @@ const ProfilePage = () => {
 
                 <button
                   onClick={handlePasswordChange}
-                  disabled={!currentPass || !newPass}
+                  disabled={userProfile.has_password ? !currentPass || !newPass : !currentPass}
                   className="flex items-center gap-2  text-white px-6 py-3 rounded-lg bg-slate-800 border  cursor-pointer hover:border-white border-slate-600  disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-black-500/25"
                 >
                   <Lock className="w-4 h-4" />

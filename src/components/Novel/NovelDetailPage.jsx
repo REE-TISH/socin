@@ -10,12 +10,16 @@ const NovelDetail = () => {
   const { novel_id } = useParams();
   const navigate = useNavigate();
   const [notFound,setNotFound] = useState(null)
+  const [isLiked,setIsLiked] = useState(null)
+  const [isBookmarked,setIsBookmarked] = useState(null)
   const [novel,setNovel] = useState(null)  
 
 
   useEffect(()=>{
         axiosInstance.get(`/api/novel/${novel_id}/`)
         .then((data)=>{   
+            setIsBookmarked(data.data.is_bookmarked)
+            setIsLiked(data.data.is_liked)
             setNovel(data.data)
         })
         .catch((err)=>{
@@ -26,14 +30,13 @@ const NovelDetail = () => {
 
   
   useEffect(()=>{
-  
+    // When the first gets on this page send a post request to the server for a adding a view to the novel by the user
     trackActions('view',novel_id)
   },[novel_id])
     
   if (!novel) {
     return (
       <div className='h-screen bg-black  flex items-center justify-center p-4'>
-      {/* <Slack className='h-10 w-10 animate-spin text-purple-500' /> */}
       <Loader/>
     </div>
     );
@@ -45,6 +48,12 @@ const NovelDetail = () => {
   };
 
   const handleLikeOrBookmarks = (action)=>{
+    if(action === 'like'){
+      setIsLiked((prev)=> !prev)
+    }
+    else{
+      setIsBookmarked((prev)=>!prev)
+    }
     trackActions(action,novel.id)
   }
 
@@ -136,13 +145,13 @@ const NovelDetail = () => {
             </button>
             {/* Likes */}
             <div  className=' flex gap-10 items-center'>
-                  {novel.is_liked?
+                  {isLiked?
                   <HeartHandshake onClick={()=>(handleLikeOrBookmarks('like'))} size={35} className='text-pink-500 cursor-pointer'/>
                   :<Heart onClick={()=>(handleLikeOrBookmarks('like'))} className='text-white cursor-pointer'/>}
 
             {/* BookMark */}
            
-                  {novel.is_bookmarked?
+                  {isBookmarked?
                    <BookmarkCheck onClick={()=>(handleLikeOrBookmarks('bookmark'))} size={30} className='text-green-500 cursor-pointer'/>
                   :<Bookmark onClick={()=>(handleLikeOrBookmarks('bookmark'))} className='text-white cursor-pointer'/>
                   }             

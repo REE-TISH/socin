@@ -4,7 +4,7 @@ import axiosInstance from '../../utils/api';
 import { X } from 'lucide-react';
 import axios from 'axios';
 import { ToastErrorMessage, ToastSuccessMessage } from '../../utils/toastMessages';
-function CreateNovelModal({ onClose}) {
+function CreateNovelModal({ onClose , novelCreated}) {
 
   const [image,setImage] = useState(null)
 
@@ -17,10 +17,7 @@ function CreateNovelModal({ onClose}) {
     coverImage: '',
     isPublic: true,
   });
-
-  // form data
-  const data = new FormData();
-  
+  const [isLoading,setIsLoading] = useState(false)
   const [genre,setGenre] = useState([])
   const [tag,setTag] = useState([])
   const genres = ['Fantasy',
@@ -87,23 +84,21 @@ function CreateNovelModal({ onClose}) {
   const createNovel = async ()=>{
     const { novelTitle, novelDescription, worldRules, styleGuide , isPublic} = formData;
 
-    if (!novelTitle || !novelDescription || !genre || !worldRules || !styleGuide || !tag) {
+    if (!novelTitle || !novelDescription || !genre || !worldRules || !styleGuide || !tag || !image) {
       ToastErrorMessage("Please fill all required fields");
       return;
     }
+    
+    setIsLoading(true)
     const CloudformData = new FormData();
     CloudformData.append("file", image);
     CloudformData.append("upload_preset", "Socin_images");
 
-    let cloudinaryImage = null
-    
-    if (image){
+        
        // Upload the image to Cloud
-      const cloudinaryResponse = await axios.post("https://api.cloudinary.com/v1_1/novelsocinbackend/image/upload",CloudformData);
-
-      cloudinaryImage = cloudinaryResponse.data.secure_url
-    }
-   
+    const cloudinaryResponse = await axios.post("https://api.cloudinary.com/v1_1/novelsocinbackend/image/upload",CloudformData);
+    
+    
     // Form data for Django
 
     let djangoData = {
@@ -114,13 +109,15 @@ function CreateNovelModal({ onClose}) {
       world_rules:worldRules,
       style_guide:styleGuide,
       current_chapter:0,
-      novel_image:cloudinaryImage,
+      novel_image:cloudinaryResponse.data.secure_url,
       isPublic:isPublic,
       tags:tag
     }
     axiosInstance.post('api/create-novel/',djangoData)
     .then((response)=>{
+      novelCreated(response.data)
       ToastSuccessMessage("Novel Created")
+
     })
     .catch((error)=>{
       if(error?.response?.data?.error == "novel creation limit"){
@@ -308,14 +305,16 @@ function CreateNovelModal({ onClose}) {
             <button
               type="button"
               onClick={onClose}
+              disabled={isLoading}
               className="flex-1 bg-red-800/40 hover:border-red-500 border border-red-900 text-white py-3 rounded-lg transition-colors duration-200 font-semibold"
             >
               Cancel
             </button>
             <button
               type="submit"
+              disabled={isLoading}
               onClick={createNovel}
-              className="flex-1  hover:border-white cursor-pointer text-white border border-slate-700 py-3 rounded-lg transition-colors duration-200 font-semibold"
+              className="flex-1  hover:border-white cursor-pointer text-white border disabled:border-slate-800 disabled:cursor-not-allowed border-slate-700 py-3 rounded-lg transition-colors duration-200 font-semibold"
             >
               Create Novel
             </button>

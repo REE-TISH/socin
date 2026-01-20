@@ -14,6 +14,7 @@ function UserProfile() {
   const [novels,setNovels] = useState([])
   const [user,setUser] = useState(null);
   const [is_premium,setIs_premium] = useState(false)
+  const [novelCreated,setNovelCreated] = useState(null)
   const handleCreateNovel = (novelData) => {
     const newNovel = {
       id: novels.length + 1,
@@ -38,7 +39,7 @@ function UserProfile() {
     .then((response)=>{
 
       setNovels(response.data.results)})
-  },[])
+  },[novelCreated])
 
 
 
@@ -160,6 +161,7 @@ function UserProfile() {
         {isCreateModalOpen && <CreateNovelModal
           onClose={() => setIsCreateModalOpen(false)}
           onCreate={handleCreateNovel}
+          novelCreated={setNovelCreated}
         />}
       
     </div>

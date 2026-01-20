@@ -2,6 +2,7 @@ import { Check, X, Zap,ArrowLeft } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import axiosInstance from '../../utils/api';
 import { toast } from 'react-toastify';
+import { ToastSuccessMessage } from '../../utils/toastMessages';
 
 
 function Subscriptions() {
@@ -38,7 +39,7 @@ function Subscriptions() {
             name: "My SaaS",
             description: "Premium Plan",
             handler: function (response) {
-                alert("Subscription Activated!");
+                ToastSuccessMessage('Thanks For Buying Subscription 🥰')
             },
             theme: { color: "#3399cc" }
         };

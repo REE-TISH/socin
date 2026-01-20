@@ -3,10 +3,10 @@ import Login from '@react-login-page/page1';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-import { LOCAL_URL, PROD_URL } from '../utils/api';
+import { LOCAL_URL, PROD_URL } from '../../utils/api';
 import { GoogleLogin } from '@react-oauth/google';
 import GoogleLoginButton from './LoginWithGoogle';
-import { ToastErrorMessage, ToastSuccessMessage } from '../utils/toastMessages';
+import { ToastErrorMessage, ToastSuccessMessage } from '../../utils/toastMessages';
 
 const LoginPage = () => {
     const[username,setUsername] = useState('')

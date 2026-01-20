@@ -150,7 +150,7 @@ function CreateChapter2() {
             <aside className={`${showSummary ? 'flex' : 'hidden'} lg:flex flex-col w-full lg:w-80 bg-black border-r border-slate-700/50 flex-shrink-0 absolute lg:relative inset-0 lg:inset-auto z-10 lg:z-0`}>
             <div className="flex-1 overflow-y-auto p-6 space-y-6">
                 {/* Chapters Progress */}
-                <div className="bg-gradient-to-br from-slate-900 to-slate-950 rounded-xl p-5 border border-slate-600/30 shadow-xl">
+                {/* <div className="bg-gradient-to-br from-slate-900 to-slate-950 rounded-xl p-5 border border-slate-600/30 shadow-xl">
                 <div className="flex items-center gap-2 mb-3">
                     <MessageSquare className="w-5 h-5 text-white" />
                     <h2 className="text-lg font-semibold text-white">Progress</h2>
@@ -168,7 +168,7 @@ function CreateChapter2() {
                     </div>
                     <p className="text-xs text-slate-400">Target: 20 chapters</p>
                 </div>
-                </div>
+                </div> */}
 
                 {/* Story Summary */}
                 <div className="bg-gradient-to-br from-slate-700/40 to-slate-800/40 rounded-xl p-5 border border-slate-600/30 shadow-xl">
