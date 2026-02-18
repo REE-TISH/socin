@@ -1,26 +1,12 @@
 import { useEffect, useState , useRef} from 'react';
 import { Book, MessageSquare, Send, ChevronDown } from 'lucide-react';
-import CreateChapter from './CreateChapter';
-import axios from 'axios';
-import axiosInstance, { PROD_URL } from '../../utils/api';
+import axiosInstance from '../../utils/api';
+import { CURRENT_URL } from '../../utils/urls';
 import { useNavigate, useParams } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { ToastErrorMessage , ToastSuccessMessage} from '../../utils/toastMessages';
-import { LOCAL_URL } from '../../utils/api';
 import Loader from '../Loader';
 
-const mockData = {
-  novelTitle: "The Last Guardian",
-  chaptersCompleted: 12,
-  summary: "In a world where magic is fading, Elara discovers she's the last guardian capable of wielding ancient powers. After her mentor's mysterious death, she must navigate treacherous political alliances and confront the shadow creatures threatening to consume the realm. Along her journey, she uncovers secrets about her lineage that could either save or destroy everything she holds dear.",
-  chatHistory: [
-    { role: 'assistant', content: 'Welcome! I\'m here to help you continue your novel. What would you like to write about next?' },
-    { role: 'user', content: 'I want to develop a scene where Elara meets the council of elders' },
-    { role: 'assistant', content: 'Excellent choice! Let\'s craft a tense council scene. The elders are skeptical of Elara\'s claims about the shadow creatures. How would you like to portray their reaction?' },
-    { role: 'user', content: 'Make them dismissive at first, but then something happens' },
-    { role: 'assistant', content: 'Perfect dramatic tension! Here\'s a scene starter:\n\nThe council chamber\'s marble pillars cast long shadows as Elara stood before the seven elders. Elder Thorne leaned forward, his weathered face twisted in skepticism.\n\n"Shadow creatures? Child, those are myths told to frighten children," he scoffed.\n\nBut as his words echoed through the chamber, the torches flickered and died, plunging them into darkness. A cold wind swept through the sealed room, and Elara felt it—the unmistakable presence of shadow magic.' },
-  ]
-};
 
 function CreateChapter2() {
     const [input, setInput] = useState('');
@@ -51,11 +37,11 @@ function CreateChapter2() {
         if (isLoading) return; // Prevent submissions while AI is generating response        
         setIsLoading(true);
         const toastId = toast.loading("Generating chapter content...",);
-        const eventSource = new EventSource(`${PROD_URL}/AI/create-chapter/${novel_id}?user_query=${input}`)
+        const eventSource = new EventSource(`${CURRENT_URL}/AI/create-chapter/${novel_id}?user_query=${input}`)
         eventSource.onmessage = (event)=>{
                 
 
-
+                console.log(event.data)
                 if(event.data == 'ERROR: Limit reached'){
                     ToastErrorMessage("You have reached your daily Limit");
                     toast.dismiss(toastId);

@@ -8,7 +8,6 @@ import Home from './components/HomePage/Home.jsx';
 import { Toaster } from 'react-hot-toast';
 import "react-toastify/dist/ReactToastify.css";
 import Error404 from './components/Error404.jsx';
-import CreateChapter from './components/ChapterCreation/CreateChapter.jsx'
 import LoginPage from './components/account/LoginPage.jsx';
 import RegisterPage from './components/account/RegisterPage.jsx';
 import NovelDetail from './components/Novel/NovelDetailPage.jsx';

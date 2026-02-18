@@ -2,7 +2,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { ToastSuccessMessage } from '../../utils/toastMessages';
-import { LOCAL_URL, PROD_URL } from '../../utils/api';
+import { CURRENT_URL } from '../../utils/urls';
 
 function GoogleLoginButton() {
 
@@ -10,7 +10,7 @@ function GoogleLoginButton() {
     
   const handleSuccess = async (credentialResponse) => {
     const res = await axios.post(
-      `${PROD_URL}/user/auth/google/`,
+      `${CURRENT_URL}/user/auth/google/`,
       { token: credentialResponse.credential }
     );
 

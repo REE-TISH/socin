@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
-import { LOCAL_URL, PROD_URL } from '../../utils/api'
+import { CURRENT_URL } from '../../utils/urls';
 import { ToastErrorMessage, ToastSuccessMessage } from '../../utils/toastMessages'
 import GoogleLoginButton from './LoginWithGoogle'
 
@@ -58,7 +58,7 @@ function RegisterPage() {
             avatar:cloudinaryImage,
         }
 
-        axios.post(`${PROD_URL}/user/create-user/`, data)
+        axios.post(`${CURRENT_URL}/user/create-user/`, data)
             .then((response) => {
                 // Usually successful POST is 201 Created
                 if (response.status === 200 || response.status === 201) {
