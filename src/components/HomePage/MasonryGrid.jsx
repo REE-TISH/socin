@@ -188,6 +188,7 @@ function MasonryGrid() {
     axiosInstance.get('/api/novel-content')
     .then((response)=>{
       if (response.data.results.length > 0){
+          console.log(response.data.results)
           setMetaData(response.data.extra_data)
           setNovels(response.data.results)
         }

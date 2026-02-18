@@ -7,7 +7,7 @@ function NovelCard({ novel }) {
 
   return (
     <div 
-     className="bg-slate-950/50 rounded-lg overflow-hidden hover:transform transition-all duration-300 shadow-lg hover:shadow-2xl border border-slate-800 hover:border-slate-700">
+     className="bg-slate-950/10 rounded-lg overflow-hidden hover:transform transition-all duration-300 shadow-lg hover:shadow-2xl border border-slate-800 hover:border-slate-700">
       {/* Novel Image */}
       <div className="relative">
         <img
