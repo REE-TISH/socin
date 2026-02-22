@@ -145,16 +145,11 @@ const NovelDetail = () => {
             </button>
             {/* Likes */}
             <div  className=' flex gap-10 items-center'>
-                  {isLiked?
-                  <HeartHandshake onClick={()=>(handleLikeOrBookmarks('like'))} size={35} className='text-pink-500 cursor-pointer'/>
-                  :<Heart onClick={()=>(handleLikeOrBookmarks('like'))} className='text-white cursor-pointer'/>}
+                  <Heart onClick={()=>(handleLikeOrBookmarks('like'))} className={`${isLiked?'text-pink-600':'text-white'} transform transition-color duration-300 cursor-pointer`}/>
 
             {/* BookMark */}
-           
-                  {isBookmarked?
-                   <BookmarkCheck onClick={()=>(handleLikeOrBookmarks('bookmark'))} size={30} className='text-green-500 cursor-pointer'/>
-                  :<Bookmark onClick={()=>(handleLikeOrBookmarks('bookmark'))} className='text-white cursor-pointer'/>
-                  }             
+                  <Bookmark onClick={()=>(handleLikeOrBookmarks('bookmark'))} className={`${isBookmarked?'text-green-600':'text-white'} transform transition-color duration-300 cursor-pointer`}/>
+                               
             </div>
 
           </div>

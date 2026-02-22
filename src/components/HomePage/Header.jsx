@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {Gem , LogOut , BookOpen , Home, HomeIcon} from 'lucide-react'
+import {Gem ,Crown, LogOut , BookOpen , Home, HomeIcon} from 'lucide-react'
 
 function Header({meta_data}) {
 
@@ -50,7 +50,21 @@ function Header({meta_data}) {
                 to={'/edit-profile/'}
                 className={`px-2 py-1 cursor-pointer rounded-full font-semibold transition-all text-white gap-1 flex`}
               >
-               <img src={meta_data.avatar || null} className='h-8 w-8 rounded-2xl object-cover' />
+               <div className='relative'>
+                    {meta_data.is_premium && (
+                      <div 
+                        className="absolute -top-[13px] -right-0 z-30 animate-bounce" 
+                        style={{ animationDuration: '2.5s' }}
+                      >
+                        <Crown 
+                          size={14} 
+                          className="text-yellow-400 fill-yellow-400 drop-shadow-[0_0_10px_rgba(250,204,21,0.8)] rotate-[20deg]" 
+                        />
+                      </div>
+                    )}
+                    <img src={meta_data.avatar || null} className='h-8 w-8 rounded-2xl object-cover' />
+                </div> 
+               
               </Link>
 
             </nav>

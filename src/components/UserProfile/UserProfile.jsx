@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import NovelCard from './NovelCard';
 import CreateNovelModal from './CreateNovelModal'
-import {ArrowLeft, Pencil} from 'lucide-react'
+import {ArrowLeft, Leaf,Flower,Pencil} from 'lucide-react'
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../utils/api';
@@ -62,23 +62,70 @@ function UserProfile() {
           <div className="px-8 pb-2">
             <div className="flex flex-col sm:flex-row items-start sm:items-end -mt-20 mb-6">
               
-             <div className='flex flex-col items-center'>
-                {is_premium && <Crown size={30} className='text-amber-300 ml-10 rotate-15'/>}
-                
-               <img
-                src={user.avatar || null}
-                alt='Avatar'
-                className="w-32 h-32 rounded-full border-4 border-zinc-900 object-cover"
-              />
-              
-             </div>
+              <div className="flex flex-col items-center">
+                {/* Added a relative wrapper to contain the absolute positioned crown */}
+                <div className="relative mt-5">
+                  
+                  {/* Crown positioned to perfectly overlap the top right of the frame */}
+                  {is_premium && (
+                    <>
+                      {/* Top-Left Leaf */}
+                      <div className="absolute top-2 -left-4 z-20 -rotate-45 drop-shadow-[0_2px_4px_rgba(217,119,6,0.6)]">
+                        <Leaf size={24} className="text-amber-400 fill-amber-400/30" />
+                      </div>
+
+                      {/* Middle-Left Flower */}
+                      <div className="absolute top-1/2 -left-6 -translate-y-1/2 z-20 -rotate-12 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]">
+                        <Flower size={20} className="text-yellow-300 fill-yellow-100" />
+                      </div>
+
+                      {/* Bottom-Left Leaf (Pointing up towards image) */}
+                      <div className="absolute bottom-2 -left-3 z-20 -rotate-[120deg] drop-shadow-md">
+                        <Leaf size={28} className="text-amber-500 fill-amber-500/40" />
+                      </div>
+
+                      {/* Bottom-Center "Badge" Flower */}
+                      <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30 drop-shadow-[0_0_12px_rgba(250,204,21,0.9)]">
+                        <Flower size={32} className="text-yellow-400 fill-yellow-200" />
+                      </div>
+
+                      {/* Bottom-Right Leaf (Pointing up towards image) */}
+                      <div className="absolute bottom-1 -right-3 z-20 rotate-[120deg] drop-shadow-md">
+                        <Leaf size={24} className="text-amber-500 fill-amber-500/40" />
+                      </div>
+
+                      {/* Middle-Right Leaf */}
+                      <div className="absolute top-1/2 -right-5 -translate-y-1/2 z-20 rotate-45 drop-shadow-md">
+                        <Leaf size={18} className="text-amber-400 fill-amber-400/30" />
+                      </div>
+                    </>
+                  )}
+
+                  {/* The Premium Gradient Ring */}
+                  <div
+                    className={`relative rounded-full transition-all duration-300 ${
+                      is_premium
+                        ? " shadow-[0_0_25px_rgba(245,158,11,0.5)]"
+                        : "p-0 bg-transparent"
+                    }`}
+                  >
+                    <img
+                      src={user.avatar || "/default-avatar.jpg"} // Always good to have a fallback
+                      alt="Avatar"
+                      className="w-32 h-32 rounded-full  object-cover relative z-0"
+                    />
+                  </div>
+                  
+                </div>
+              </div>
+
               <div className="mt-4 sm:mt-0 sm:ml-6 flex-1">
                 <h1 className="text-xl lg:text-3xl font-thin text-white">{user.username}</h1>
                 <p className="text-gray-400 font-thin text-[10px]">{user.user_id}</p>
               </div>
               <button
                 onClick={() => setIsCreateModalOpen(true)}
-                className="mt-4 sm:mt-0  text-gray-500 border border-slate-600 px-3 py-2 rounded-lg font-semibold cursor-pointer hover:text-white hover:border-white transition-colors duration-200 flex items-center gap-2"
+                className={`mt-4 sm:mt-0   border ${is_premium ? 'border-yellow-600 text-yellow-500/50 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]' : 'border-slate-600 text-gray-500'} px-3 py-2 rounded-lg font-semibold cursor-pointer hover:text-white hover:border-white transition-colors duration-200 flex items-center gap-2`}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
