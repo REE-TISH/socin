@@ -70,22 +70,22 @@ function UserProfile() {
                   {is_premium && (
                     <>
                       {/* Top-Left Leaf */}
-                      <div className="absolute top-2 -left-4 z-20 -rotate-45 drop-shadow-[0_2px_4px_rgba(217,119,6,0.6)]">
+                      <div className="absolute top-2 -left-4 z-20 -rotate-45 drop-shadow-[0_2px_4px_rgba(217,119,6,0.6)] animate-bounce" style={{ animationDuration: '2s' }}>
                         <Leaf size={24} className="text-amber-400 fill-amber-400/30" />
                       </div>
 
                       {/* Middle-Left Flower */}
-                      <div className="absolute top-1/2 -left-6 -translate-y-1/2 z-20 -rotate-12 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]">
+                      <div className="absolute top-1/2 -left-6 -translate-y-1/2 z-20 -rotate-12 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)] animate-bounce" style={{ animationDuration: '1.5s' }}>
                         <Flower size={20} className="text-yellow-300 fill-yellow-100" />
                       </div>
 
                       {/* Bottom-Left Leaf (Pointing up towards image) */}
-                      <div className="absolute bottom-2 -left-3 z-20 -rotate-[120deg] drop-shadow-md">
+                      <div className="absolute bottom-2 -left-3 z-20 -rotate-[120deg] drop-shadow-md animate-bounce" style={{ animationDuration: '2.5s' }}>
                         <Leaf size={28} className="text-amber-500 fill-amber-500/40" />
                       </div>
 
                       {/* Bottom-Center "Badge" Flower */}
-                      <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30 drop-shadow-[0_0_12px_rgba(250,204,21,0.9)]">
+                      <div className="absolute -bottom-5 left-1/2 -translate-x-1/2 z-30 drop-shadow-[0_0_12px_rgba(250,204,21,0.9)] animate-bounce" style={{ animationDuration: '10s' }}>
                         <Flower size={32} className="text-yellow-400 fill-yellow-200" />
                       </div>
 
@@ -110,7 +110,7 @@ function UserProfile() {
                     }`}
                   >
                     <img
-                      src={user.avatar || "/default-avatar.jpg"} // Always good to have a fallback
+                      src={user.avatar || "/default-avatar.jpg"} 
                       alt="Avatar"
                       className="w-32 h-32 rounded-full  object-cover relative z-0"
                     />
@@ -120,12 +120,12 @@ function UserProfile() {
               </div>
 
               <div className="mt-4 sm:mt-0 sm:ml-6 flex-1">
-                <h1 className="text-xl lg:text-3xl font-thin text-white">{user.username}</h1>
+                <h1 className={`${is_premium ? 'KajiroFont' : 'font-thin'} text-2xl lg:text-5xl text-yellow-500/70 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]`}>{user.username}</h1>
                 <p className="text-gray-400 font-thin text-[10px]">{user.user_id}</p>
               </div>
               <button
                 onClick={() => setIsCreateModalOpen(true)}
-                className={`mt-4 sm:mt-0   border ${is_premium ? 'border-yellow-600 text-yellow-500/50 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]' : 'border-slate-600 text-gray-500'} px-3 py-2 rounded-lg font-semibold cursor-pointer hover:text-white hover:border-white transition-colors duration-200 flex items-center gap-2`}
+                className={`mt-4 sm:mt-0   border ${is_premium ? 'border-yellow-600 text-yellow-500/80 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)] hover:text-yellow-500 hover:border-yellow-600   transition-colors duration-200' : 'border-slate-600 text-gray-500 font-semibold hover:text-white hover:border-white transition-colors duration-200'} px-3 py-2 rounded-lg  cursor-pointer  flex items-center justify-center gap-2`}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />

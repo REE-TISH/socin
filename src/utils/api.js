@@ -23,7 +23,7 @@ const axiosInstance = axios.create({
 // Request interceptor: attach token
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const accessToken = localStorage.getItem("accessToken");
+    let accessToken = localStorage.getItem("accessToken");
     const refreshToken = localStorage.getItem("refreshToken");
 
     // If token expired and refresh token exists
