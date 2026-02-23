@@ -5,6 +5,13 @@ body {
   background: #000;
 }
 
+@font-face {
+  font-family: 'Kajiro';
+  src: url('./fonts/Kajiro.woff2') format('woff2'),
+       url('../public/Kajiro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 
 /* For the whole scrollbar */

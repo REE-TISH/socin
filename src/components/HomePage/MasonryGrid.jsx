@@ -188,7 +188,6 @@ function MasonryGrid() {
     axiosInstance.get('/api/novel-content')
     .then((response)=>{
       if (response.data.results.length > 0){
-          console.log(response.data.results)
           setMetaData(response.data.extra_data)
           setNovels(response.data.results)
         }
@@ -211,7 +210,7 @@ function MasonryGrid() {
       {filteredPins.length > 0 ? (
         <div className=" grid grid-cols-2 sm:grid-cols-3 md:flex lg:pl-12 md:flex-wrap  gap-4">
           {novels.map(novel => (
-            <PinCard key={novel.id} novel={novel} />
+            <PinCard key={novel.id} novel={novel} extra_data={metaData} />
           ))}
         </div>
       ) : (

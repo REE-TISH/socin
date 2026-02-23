@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function PinCard({ novel }) {
+function PinCard({ novel,extra_data }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
   const navigate = useNavigate()
@@ -13,7 +13,7 @@ function PinCard({ novel }) {
     //   onMouseEnter={() => setIsHovered(true)}
     //   onMouseLeave={() => setIsHovered(false)}
     >
-      <div  onClick={()=>navigate(`/novel/${novel.id}/`)} className={`  md:max-w-50  cursor-pointer relative overflow-hidden rounded-2xl ${novel.is_premium && 'shadow-2xl shadow-cyan-950'}  bg-gray-900`}>
+      <div  onClick={()=>navigate(`/novel/${novel.id}/`)} className={`  md:max-w-50  cursor-pointer relative overflow-hidden rounded-2xl ${extra_data.is_premium && 'shadow-2xl shadow-cyan-950'}  bg-gray-900`}>
         <img
           src={novel.novel_image}
           alt={novel.name}
