@@ -120,7 +120,7 @@ function UserProfile() {
               </div>
 
               <div className="mt-4 sm:mt-0 sm:ml-6 flex-1">
-                <h1 className={`${is_premium ? 'KajiroFont' : 'font-thin'} text-2xl lg:text-5xl text-yellow-500/70 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]`}>{user.username}</h1>
+                <h1 className={`${is_premium ? 'KajiroFont text-yellow-500/70 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]' : 'font-thin text-slate-500'} text-2xl lg:text-5xl `}>{user.username}</h1>
                 <p className="text-gray-400 font-thin text-[10px]">{user.user_id}</p>
               </div>
               <button
