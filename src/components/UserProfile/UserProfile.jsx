@@ -60,7 +60,7 @@ function UserProfile() {
            
         {/* User Profile Info */}
           <div className="px-8 pb-2">
-            <div className="flex flex-col sm:flex-row items-start sm:items-end -mt-20 mb-6">
+            <div className="flex flex-col sm:flex-row items-center sm:items-end -mt-20 mb-6">
               
               <div className="flex flex-col items-center">
                 {/* Added a relative wrapper to contain the absolute positioned crown */}
@@ -112,7 +112,7 @@ function UserProfile() {
                     <img
                       src={user.avatar || "/default-avatar.jpg"} 
                       alt="Avatar"
-                      className="w-32 h-32 rounded-full  object-cover relative z-0"
+                      className="w-20 h-20 lg:w-32 lg:h-32 rounded-full  object-cover relative z-0"
                     />
                   </div>
                   
@@ -120,12 +120,12 @@ function UserProfile() {
               </div>
 
               <div className="mt-4 sm:mt-0 sm:ml-6 flex-1">
-                <h1 className={`${is_premium ? 'KajiroFont' : 'font-thin'} text-2xl lg:text-5xl text-yellow-500/70 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]`}>{user.username}</h1>
+                <h1 className={`${is_premium ? 'KajiroFont' : 'font-thin'} text-2xl  lg:text-5xl text-yellow-500/70 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)]`}>{user.username}</h1>
                 <p className="text-gray-400 font-thin text-[10px]">{user.user_id}</p>
               </div>
               <button
                 onClick={() => setIsCreateModalOpen(true)}
-                className={`mt-4 sm:mt-0   border ${is_premium ? 'border-yellow-600 text-yellow-500/80 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)] hover:text-yellow-500 hover:border-yellow-600   transition-colors duration-200' : 'border-slate-600 text-gray-500 font-semibold hover:text-white hover:border-white transition-colors duration-200'} px-3 py-2 rounded-lg  cursor-pointer  flex items-center justify-center gap-2`}
+                className={`mt-4 sm:mt-0   border ${is_premium ? 'border-yellow-600 text-yellow-500/80 drop-shadow-[0_0_8px_rgba(250,204,21,0.6)] hover:text-yellow-500 hover:border-yellow-600   transition-colors duration-200' : 'border-slate-600 text-gray-500 font-semibold hover:text-white hover:border-white transition-colors duration-200'} px-2 py-1 lg:px-3 lg:py-2 rounded-lg  cursor-pointer  flex items-center justify-center gap-2`}
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
@@ -134,7 +134,7 @@ function UserProfile() {
               </button>
             </div>
             
-            <p className="text-gray-300 mb-6 max-w-3xl">{user.bio}</p>
+            <p className="text-gray-300 mb-6 max-w-3xl text-xs lg:text-sm">{user.bio}</p>
 
             <div className="flex gap-8 text-center sm:text-left">
               <div>
