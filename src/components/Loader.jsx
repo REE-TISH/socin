@@ -5,7 +5,7 @@ function Loader() {
 
           <div className="flex items-center justify-center min-h-screen">
             <div className="relative">
-              <div className="relative w-8 h-8 md:w-16 md:h-16">
+              <div className="relative w-8 h-8 ">
                 <div
                   className="absolute w-full h-full rounded-full border-[3px] border-gray-100/10 border-r-[#0ff] border-b-[#0ff] animate-spin"
                   style={{"animationDuration": "1.5s"}}
