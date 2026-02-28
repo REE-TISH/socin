@@ -111,7 +111,7 @@ const NovelReader = () => {
             <div className="flex justify-center space-x-4">
               <button
                 onClick={() => navigate(`/novel/${novel_id}`)}
-                className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl transition-colors"
+                className="bg-slate-600 hover:bg-slate-700 text-white px-6 py-3 rounded-xl transition-colors"
               >
                 Back to Details
               </button>

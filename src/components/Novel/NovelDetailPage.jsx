@@ -165,7 +165,7 @@ const NovelDetail = () => {
             <div
               key={chapter.id}
               onClick={() => navigate(`/novel/${novel.id}/chapter/${chapter.id}/${chapter_count}`)}
-              className="group bg-gray-900/50 hover:bg-gray-800/50 border border-gray-800 hover:border-purple-500/50 rounded-xl p-4 transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-purple-500/10"
+              className="group bg-gray-900/50 hover:bg-gray-800/50 border border-gray-800 hover:border-cyan-500/50 rounded-xl p-4 transition-all duration-300 cursor-pointer hover:shadow-lg hover:shadow-purple-500/10"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-4">
